@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:myshop/ui/products/products_manager.dart';
 import '../../models/product.dart';
 import 'product_detail_screen.dart';
 import 'package:provider/provider.dart';
 import '../cart/cart_manager.dart';
+import 'products_manager.dart';
 
 class ProductGridTitle extends StatelessWidget {
   const ProductGridTitle(
@@ -47,7 +49,8 @@ class ProductGridTitle extends StatelessWidget {
             color: Theme.of(context).colorScheme.secondary,
             onPressed: () {
               // print('Toggle a favorite product');
-              product.isFavorite = !isFavorite;
+              // product.isFavorite = !isFavorite;
+              ctx.read<ProductsManager>().toggleFavoriteStatus(product);
             },
           );
         },
