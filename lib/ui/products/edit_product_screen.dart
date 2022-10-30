@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myshop/ui/products/products_manager.dart';
 import 'package:provider/provider.dart';
 import '../../models/product.dart';
 import '../shared/dialog_utils.dart';
-// import 'products_manager.dart';
+import 'products_manager.dart';
 
 class EditProductScreen extends StatefulWidget {
   static const routeName = '/edit-product';
@@ -79,11 +78,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
     });
 
     try {
-      final productsManager = context.read()<ProductsManager>();
+      final productsManager = context.read<ProductsManager>();
       if (_editedProduct.id != null) {
-        productsManager.updateProduct(_editedProduct);
+        await productsManager.updateProduct(_editedProduct);
       } else {
-        productsManager.addProduct(_editedProduct);
+        await productsManager.addProduct(_editedProduct);
       }
     } catch (error) {
       await showErrorDialog(context, 'Something went wrong.');
